@@ -4,8 +4,6 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
-
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -28,18 +26,18 @@ public class PracticeFormTests {
         executeJavaScript("$('#fixedban').remove()");
 
         // Filling textboxes
-        $("[id = firstName]").setValue("Artem");
-        $("[id = lastName]").setValue("Bobkov");
-        $("[id = userEmail]").setValue("abobkov@dnomads.pro");
-        $("[id = userNumber]").setValue("1234567899");
-        $("[id = currentAddress]").setValue("Moscow");
+        $("#firstName").setValue("Artem");
+        $("#lastName").setValue("Bobkov");
+        $("#userEmail").setValue("abobkov@dnomads.pro");
+        $("#userNumber").setValue("1234567899");
+        $("#currentAddress").setValue("Moscow");
 
         // Subject
         $("#subjectsInput").sendKeys("Physics");
         $("#subjectsInput").pressEnter();
 
         // Filling date
-        $("[id=dateOfBirthInput]").click();
+        $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("October");
         $(".react-datepicker__year-select").selectOption("1997");
         $(byText("14")).click();
@@ -57,23 +55,50 @@ public class PracticeFormTests {
         $("#react-select-4-input").setValue("Jaiselmer").pressEnter();
 
         // State and city
-        //$("[id=uploadPicture]").uploadFile(new File("src/test/resources/example.png"));
-        $("#uploadPicture").uploadFile(new File ("src/test/resources/example.png"));
+        $("#uploadPicture").uploadFromClasspath("example.png");
 
         // Submit
         $("#submit").click();
 
         // Should have
-        $(".modal-body").shouldHave(
-                text("Artem Bobkov"),
-                text("abobkov@dnomads.pro"),
-                text("Male"),
-                text("1234567899"),
-                text("14 October,1997"),
-                text("Physics"),
-                text("Sports, Reading, Music"),
-                text("example.png"),
-                text("Moscow"),
+        $(".table-responsive").find(byText("Student Name")).closest("tr").shouldHave(
+                text("Student Name"),
+                text("Artem Bobkov")
+        );
+        $(".table-responsive").find(byText("Student Email")).closest("tr").shouldHave(
+                text("Student Email"),
+                text("abobkov@dnomads.pro")
+        );
+        $(".table-responsive").find(byText("Gender")).closest("tr").shouldHave(
+                text("Gender"),
+                text("Male")
+        );
+        $(".table-responsive").find(byText("Mobile")).closest("tr").shouldHave(
+                text("Mobile"),
+                text("1234567899")
+        );
+        $(".table-responsive").find(byText("Date of Birth")).closest("tr").shouldHave(
+                text("Date of Birth"),
+                text("14 October,1997")
+        );
+        $(".table-responsive").find(byText("Subjects")).closest("tr").shouldHave(
+                text("Subjects"),
+                text("Physics")
+        );
+        $(".table-responsive").find(byText("Hobbies")).closest("tr").shouldHave(
+                text("Hobbies"),
+                text("Sports, Reading, Music")
+        );
+        $(".table-responsive").find(byText("Picture")).closest("tr").shouldHave(
+                text("Picture"),
+                text("example.png")
+        );
+        $(".table-responsive").find(byText("Address")).closest("tr").shouldHave(
+                text("Address"),
+                text("Moscow")
+        );
+        $(".table-responsive").find(byText("State and City")).closest("tr").shouldHave(
+                text("State and City"),
                 text("Rajasthan Jaiselmer")
         );
     }
