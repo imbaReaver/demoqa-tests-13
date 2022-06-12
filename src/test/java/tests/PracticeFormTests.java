@@ -4,6 +4,7 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -40,7 +41,7 @@ public class PracticeFormTests {
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("October");
         $(".react-datepicker__year-select").selectOption("1997");
-        $(byText("14")).click();
+        $(".react-datepicker__day--014").click();
 
         // Gender radio
         $("#genterWrapper").$(byText("Male")).click();
@@ -61,45 +62,25 @@ public class PracticeFormTests {
         $("#submit").click();
 
         // Should have
-        $(".table-responsive").find(byText("Student Name")).closest("tr").shouldHave(
-                text("Student Name"),
-                text("Artem Bobkov")
-        );
-        $(".table-responsive").find(byText("Student Email")).closest("tr").shouldHave(
-                text("Student Email"),
-                text("abobkov@dnomads.pro")
-        );
-        $(".table-responsive").find(byText("Gender")).closest("tr").shouldHave(
-                text("Gender"),
-                text("Male")
-        );
-        $(".table-responsive").find(byText("Mobile")).closest("tr").shouldHave(
-                text("Mobile"),
-                text("1234567899")
-        );
-        $(".table-responsive").find(byText("Date of Birth")).closest("tr").shouldHave(
-                text("Date of Birth"),
-                text("14 October,1997")
-        );
-        $(".table-responsive").find(byText("Subjects")).closest("tr").shouldHave(
-                text("Subjects"),
-                text("Physics")
-        );
-        $(".table-responsive").find(byText("Hobbies")).closest("tr").shouldHave(
-                text("Hobbies"),
-                text("Sports, Reading, Music")
-        );
-        $(".table-responsive").find(byText("Picture")).closest("tr").shouldHave(
-                text("Picture"),
-                text("example.png")
-        );
-        $(".table-responsive").find(byText("Address")).closest("tr").shouldHave(
-                text("Address"),
-                text("Moscow")
-        );
-        $(".table-responsive").find(byText("State and City")).closest("tr").shouldHave(
-                text("State and City"),
-                text("Rajasthan Jaiselmer")
-        );
+        $$(".table-responsive tr").filterBy(text("Student Name")).shouldHave(texts(
+                "Artem Bobkov"));
+        $$(".table-responsive tr").filterBy(text("Student Email")).shouldHave(texts(
+                "abobkov@dnomads.pro"));
+        $$(".table-responsive tr").filterBy(text("Gender")).shouldHave(texts(
+                "Male"));
+        $$(".table-responsive tr").filterBy(text("Mobile")).shouldHave(texts(
+                "1234567899"));
+        $$(".table-responsive tr").filterBy(text("Date of Birth")).shouldHave(texts(
+                "14 October,1997"));
+        $$(".table-responsive tr").filterBy(text("Subjects")).shouldHave(texts(
+                "Physics"));
+        $$(".table-responsive tr").filterBy(text("Hobbies")).shouldHave(texts(
+                "Sports, Reading, Music"));
+        $$(".table-responsive tr").filterBy(text("Picture")).shouldHave(texts(
+                "example.png"));
+        $$(".table-responsive tr").filterBy(text("Address")).shouldHave(texts(
+                "Moscow"));
+        $$(".table-responsive tr").filterBy(text("State and City")).shouldHave(texts(
+                "Rajasthan Jaiselmer"));
     }
 }
