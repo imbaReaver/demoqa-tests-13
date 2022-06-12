@@ -48,10 +48,8 @@ public class AutomationPracticeFormPage {
        $("#subjectsInput").pressEnter();
        return this;
    }
-   public AutomationPracticeFormPage setHobbies(String firstValue, String secondValue, String thirdValue) {
-       $("#hobbiesWrapper").$(byText(firstValue)).click();
-       $("#hobbiesWrapper").$(byText(secondValue)).click();
-       $("#hobbiesWrapper").$(byText(thirdValue)).click();
+   public AutomationPracticeFormPage setHobbies(String value) {
+       $("#hobbiesWrapper").$(byText(value)).click();
        return this;
    }
     public AutomationPracticeFormPage setStateAndCity(String state, String city) {

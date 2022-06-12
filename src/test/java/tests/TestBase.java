@@ -7,7 +7,7 @@ import pages.AutomationPracticeFormPage;
 public class TestBase {
 
     AutomationPracticeFormPage  automationPracticeFormPage = new AutomationPracticeFormPage();
-
+    TestData testData = new TestData();
     // Browser configuration
     @BeforeAll
     static void beforeAll() {

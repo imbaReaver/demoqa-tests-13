@@ -1,14 +1,6 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import pages.AutomationPracticeFormPage;
-
-import static com.codeborne.selenide.CollectionCondition.texts;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
 
 public class PracticeFormTestsWithPageObjects extends TestBase {
 
@@ -23,7 +15,7 @@ public class PracticeFormTestsWithPageObjects extends TestBase {
                 .setDateOfBirth("14", "October", "1997")
                 .setGender("Male")
                 .setSubject("Physics")
-                .setHobbies("Sports", "Reading", "Music")
+                .setHobbies("Sports")
                 .setStateAndCity("Rajasthan", "Jaiselmer")
                 .setPicture("example.png")
                 .clickSubmit()
