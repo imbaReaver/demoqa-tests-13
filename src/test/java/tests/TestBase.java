@@ -1,6 +1,7 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import data.TestData;
 import org.junit.jupiter.api.BeforeAll;
 import pages.AutomationPracticeFormPage;
 

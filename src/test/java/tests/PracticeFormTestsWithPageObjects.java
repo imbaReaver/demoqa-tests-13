@@ -25,7 +25,7 @@ public class PracticeFormTestsWithPageObjects extends TestBase {
                 .checkResult("Mobile", "1234567899")
                 .checkResult("Date of Birth", "14 October,1997")
                 .checkResult("Subjects", "Physics")
-                .checkResult("Hobbies", "Sports, Reading, Music")
+                .checkResult("Hobbies", "Sports")
                 .checkResult("Picture", "example.png")
                 .checkResult("Address", "Moscow")
                 .checkResult("State and City", "Rajasthan Jaiselmer");

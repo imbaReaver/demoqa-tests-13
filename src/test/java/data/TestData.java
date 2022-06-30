@@ -1,4 +1,4 @@
-package tests;
+package data;
 
 import com.github.javafaker.Faker;
 import utils.RandomUtils;
@@ -6,7 +6,7 @@ import utils.RandomUtils;
 public class TestData {
 
     Faker faker = new Faker();
-    String firstName = faker.address().firstName(),
+    public String firstName = faker.address().firstName(),
             lastName = faker.address().lastName(),
             email = faker.internet().emailAddress(),
             phone = String.valueOf(faker.number().digits(10)),
